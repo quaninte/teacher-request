@@ -1,0 +1,77 @@
+<html>
+
+<header>
+	<title>Yen's session</title>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+
+  <style type="text/css">
+  	#images {
+  		width: 100%;
+  		height: 100%;
+  		margin: 0;
+  		padding: 0;
+  		position: absolute;
+  		left: 0;
+  		top: 0;
+  		bottom: 0;
+  		right: 0;
+  	}
+
+  	.img-item {
+  		width: 33%;
+  		height: 100%;
+  		border: 0;
+  		margin: 0;
+  	}
+  </style>
+</header>
+
+<body>
+	<div id="controller">
+		<div>Backdrop <input type="text" name="backdrop" id="backdrop" value="http://via.placeholder.com/1000x1000"></div>
+		<div>Img1 <input type="text" name="img1" id="img1" value="http://via.placeholder.com/500x500"></div>
+		<div>Img2 <input type="text" name="img2" id="img2" value="http://via.placeholder.com/500x500"></div>
+		<div>Img3 <input type="text" name="img3" id="img3" value="http://via.placeholder.com/500x500"></div>
+		<div><button name="Update" id="update">Update</button></div>
+	</div>
+	<div id="container">
+		<button id="controller-toggle" style="position: absolute; right: 2px; top: 2px;">X</button>
+		<div id="images"></div>
+	</div>
+
+	<script type="text/javascript">
+		function appendImg(url) {
+			$('#images').append('<img src="' + url + '" class="img-item">');
+		}
+
+		function updateImg() {
+			var img1 = $('#img1').val();
+			var img2 = $('#img2').val();
+			var img3 = $('#img3').val();
+
+			$('#images').html('');
+			appendImg(img1);
+			appendImg(img2);
+			appendImg(img3);
+		}
+
+		$(function() {
+			// Toggle controller
+			$('#controller-toggle').click(function() {
+				$('#controller').toggle();
+			});
+
+			// Update images
+			$('#update').click(function() {
+				updateImg();
+			});
+
+			updateImg();
+		});
+	</script>
+</body>
+
+  </html>
